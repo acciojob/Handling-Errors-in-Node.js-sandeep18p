@@ -7,10 +7,11 @@ if(process.argv.length !==3){
 }
 const filePath =  process.argv[2];
 
+
 function printFileContents(filePath) { 
 fs.readFile(filePath,'utf-8', (err,data)=>{
     if(err){
-    console.log(`Column ${filePath} not found in the CSV`);
+    console.log(`Expected Output: Column ${filePath} not found in the CSV`);
     process.exit(1);
     }
 
