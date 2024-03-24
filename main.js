@@ -1,7 +1,22 @@
 const fs = require('fs');
 
-function printFileContents(filePath) {
-  // TODO: Use fs.readFile to read the file contents
+
+if(process.argv.length !==3){
+  console.log("Argument error!!");
+  process.exit(1);
+}
+const filePath =  process.argv[2];
+
+function printFileContents(filePath) { 
+fs.readFile(filePath,'utf-8', (err,data)=>{
+    if(err){
+    console.log(`Column ${filePath} not found in the CSV`);
+    process.exit(1);
+    }
+
+   console.log(data);
+})
 }
 
-// TODO: Call printFileContents with the command-line argument
+
+printFileContents(filePath);
