@@ -1,27 +1,16 @@
-const fs = require('fs');
-const path = require('path');
+const fs = require("fs");
 
-// Get the file path from command-line arguments
 const filePath = process.argv[2];
 
-// Function to read and print file contents
-const readFile = (filePath) => {
-  fs.readFile(filePath, 'utf8', (err, data) => {
-    if (err) {
-      // Print error message if file cannot be read
-      console.error(`Column '${path.basename(filePath)}' not found in the CSV.`);
-      return;
-    }
-    // Print file contents to console
-    console.log(data);
-  });
-};
-
-// Check if file path is provided
 if (!filePath) {
-  console.error('Please provide a file path as a command-line argument.');
+  console.error("Usage: node print.js <file_path>");
   process.exit(1);
 }
 
-// Read and print file contents
-readFile(filePath);
+fs.readFile(filePath, "utf8", (err, data) => {
+  if (err) {
+    console.error(`Error: ${err.message}`);
+  } else {
+    console.log(data);
+  }
+});
